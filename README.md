@@ -16,6 +16,9 @@ You require a [TMDB] api key to successfully build this app.
 - Kotlin [Coroutines]
 - [Livedata] 
 
+# Further Readings
+- [How to Use the Paging Library in Android] 
+
 
 [TMDB]: <https://www.themoviedb.org/>
 [Register]: <https://developers.themoviedb.org/3>
@@ -24,3 +27,4 @@ You require a [TMDB] api key to successfully build this app.
 [Paging3]: <https://developer.android.com/topic/libraries/architecture/paging/v3-overview>
 [Coroutines]: <https://kotlinlang.org/docs/reference/coroutines-overview.html>
 [Livedata]: <https://developer.android.com/topic/libraries/architecture/livedata>
+[How to Use the Paging Library in Android]: <https://proandroiddev.com/how-to-use-the-paging-3-library-in-android-5d128bb5b1d8>
