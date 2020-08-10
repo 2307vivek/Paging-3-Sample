@@ -1,6 +1,8 @@
 # Paging-3-Sample
 This app is created as a sample app which loads movies from the [TMDB] api, and uses the [Paging3] library to show it in a ```RecyclerView```
 
+This project is under development.
+
 # Development Setup
 You require a [TMDB] api key to successfully build this app.
 - [Register] a TMDB api key.
