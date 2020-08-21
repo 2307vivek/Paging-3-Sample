@@ -44,12 +44,10 @@ class MainActivity : AppCompatActivity() {
 
         movieAdapter.addLoadStateListener { loadState ->
 
-            if (loadState.refresh is LoadState.Loading ||
-                loadState.append is LoadState.Loading
-            ) {
-                // Show ProgressBar
-                //progressBar.visibility = View.VISIBLE
+            if (loadState.refresh is LoadState.Loading) {
 
+                // Show ProgressBar
+                progressBar.visibility = View.VISIBLE
             }
             else {
                 // Hide ProgressBar
