@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        // show the loading state for te first load
         movieAdapter.addLoadStateListener { loadState ->
 
             if (loadState.refresh is LoadState.Loading) {
