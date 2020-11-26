@@ -17,7 +17,7 @@ class MoviePagingSource(
             LoadResult.Page(
                 data = movieListResponse.results!!,
                 prevKey = if (nextPage == 1) null else nextPage - 1 ,
-                nextKey = if (nextPage <= movieListResponse.totalPages!!)
+                nextKey = if (nextPage < movieListResponse.totalPages!!)
                     movieListResponse.page?.plus(1) else null
             )
         }catch (e: Exception){
