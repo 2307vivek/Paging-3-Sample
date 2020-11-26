@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.training.pagingsample.ui.adapters.MovieLoadStateAdapter
 import com.training.pagingsample.ui.adapters.MovieAdapter
 import com.training.pagingsample.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.training.pagingsample.databinding.ActivityMainBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,14 +20,16 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModel()
 
     private lateinit var movieAdapter: MovieAdapter
+    private lateinit var mainBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        mainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mainBinding.root)
 
         movieAdapter = MovieAdapter()
 
-        movie_recycler.apply {
+        mainBinding.movieRecycler.apply {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
             adapter = movieAdapter.withLoadStateFooter(
@@ -41,18 +43,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
         // show the loading state for te first load
         movieAdapter.addLoadStateListener { loadState ->
 
             if (loadState.refresh is LoadState.Loading) {
 
                 // Show ProgressBar
-                progressBar.visibility = View.VISIBLE
+                mainBinding.progressBar.visibility = View.VISIBLE
             }
             else {
                 // Hide ProgressBar
-                progressBar.visibility = View.GONE
+                mainBinding.progressBar.visibility = View.GONE
 
                 // If we have an error, show a toast
                 val errorState = when {
