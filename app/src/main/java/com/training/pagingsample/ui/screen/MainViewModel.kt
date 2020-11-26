@@ -18,7 +18,7 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
 
                 if (after == null) {
                     // we're at the end of the list
-                    return@insertSeparators null
+                    return@insertSeparators MovieModel.SeparatorItem("End of list")
                 }
 
                 if (before == null) {
@@ -40,7 +40,7 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         }
 
 
-    private fun getMovieListStream() : Flow<PagingData<Movie>>{
+    private fun getMovieListStream(): Flow<PagingData<Movie>> {
         return Pager(PagingConfig(20)) {
             MoviePagingSource(repository)
         }.flow

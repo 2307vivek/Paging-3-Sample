@@ -9,7 +9,6 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.training.pagingsample.ui.adapters.MovieLoadStateAdapter
 import com.training.pagingsample.ui.adapters.MovieAdapter
-import com.training.pagingsample.R
 import com.training.pagingsample.databinding.ActivityMainBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
