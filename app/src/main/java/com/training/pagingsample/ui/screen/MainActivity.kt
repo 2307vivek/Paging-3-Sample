@@ -42,10 +42,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        mainBinding.btnRetry.setOnClickListener{
+            movieAdapter.retry()
+        }
+
         // show the loading state for te first load
         movieAdapter.addLoadStateListener { loadState ->
 
             if (loadState.refresh is LoadState.Loading) {
+
+                mainBinding.btnRetry.visibility = View.GONE
 
                 // Show ProgressBar
                 mainBinding.progressBar.visibility = View.VISIBLE
@@ -58,7 +64,10 @@ class MainActivity : AppCompatActivity() {
                 val errorState = when {
                     loadState.append is LoadState.Error -> loadState.append as LoadState.Error
                     loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
-                    loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+                    loadState.refresh is LoadState.Error -> {
+                        mainBinding.btnRetry.visibility = View.VISIBLE
+                        loadState.refresh as LoadState.Error
+                    }
                     else -> null
                 }
                 errorState?.let {
