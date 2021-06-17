@@ -8,7 +8,7 @@ credentialProperty.load(new FileInputStream(credentials))
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.training.pagingsample"
@@ -22,7 +22,7 @@ android {
         buildConfigField("String", "SMALL_IMAGE_URL", "\"https://image.tmdb.org/t/p/w200\"")
         buildConfigField("String", "LARGE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w500\"")
         buildConfigField("String", "ORIGINAL_IMAGE_URL", "\"https://image.tmdb.org/t/p/original\"")
-        buildConfigField("String", "TMDB_API_KEY", credentialProperty['TMDB_API_KEY'])
+        buildConfigField("String", "TMDB_API_KEY", "\"bde822b2c9d1243610b103913d274f27\"")
     }
 
     buildFeatures {
@@ -49,12 +49,12 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.core:core-ktx:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -62,23 +62,23 @@ dependencies {
 
     //ViewModel and LiveData
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
 
     //Google Material Design
-    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.google.android.material:material:1.3.0'
 
     //Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
 
     //Paging
-    implementation "androidx.paging:paging-runtime:3.0.0-alpha09"
+    implementation "androidx.paging:paging-runtime-ktx:3.0.0"
 
     //koin
-    implementation "org.koin:koin-core:2.1.5"
-    implementation "org.koin:koin-android:2.1.5"
-    implementation "org.koin:koin-androidx-viewmodel:2.1.5"
-    implementation "org.koin:koin-androidx-scope:2.1.5"
+    implementation "io.insert-koin:koin-core:2.2.2"
+    implementation "io.insert-koin:koin-android:2.2.2"
+    implementation "io.insert-koin:koin-androidx-viewmodel:2.2.2"
+    implementation "io.insert-koin:koin-androidx-scope:2.2.2"
 
 }
