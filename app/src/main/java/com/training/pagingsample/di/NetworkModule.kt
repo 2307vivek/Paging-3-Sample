@@ -2,7 +2,6 @@ package com.training.pagingsample.di
 
 import com.training.pagingsample.BuildConfig
 import com.training.pagingsample.data.network.Api
-import com.training.pagingsample.data.network.MovieAppService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
@@ -14,12 +13,7 @@ val networkModule = module {
     single { okhttpClient(get()) }
     single { retrofit(get()) }
     single { apiService(get()) }
-    single { createMovieAppService(get()) }
 }
-
-fun createMovieAppService(
-    api: Api
-) : MovieAppService = MovieAppService(api)
 
 fun apiService(
     retrofit: Retrofit

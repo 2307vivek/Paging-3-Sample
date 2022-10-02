@@ -1,6 +1,6 @@
 package com.training.pagingsample.di
 
-import com.training.pagingsample.data.network.MovieAppService
+import com.training.pagingsample.data.network.Api
 import com.training.pagingsample.data.repository.Repository
 import org.koin.dsl.module
 
@@ -9,5 +9,5 @@ val repositoryModule = module {
 }
 
 fun createRepository(
-    movieAppService: MovieAppService
-) : Repository = Repository(movieAppService)
+    service: Api
+) : Repository = Repository(service)

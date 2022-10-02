@@ -1,15 +1,20 @@
 package com.training.pagingsample.data.repository
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.training.pagingsample.data.model.Movie
 import com.training.pagingsample.data.model.Result
-import com.training.pagingsample.data.network.MovieAppService
+import com.training.pagingsample.data.network.Api
 import com.training.pagingsample.data.network.response.MovieListResponse
+import com.training.pagingsample.data.repository.paged.MoviePagingSource
+import kotlinx.coroutines.flow.Flow
 
-class Repository(private val service: MovieAppService) {
+class Repository(private val service: Api) {
 
-    suspend fun getPopularMovies(page: Int) : MovieListResponse {
-        return when(val result = service.fetchPopularMovies(page)){
-            is Result.Success -> result.data
-            is Result.Error -> throw result.error
-        }
+    fun getMovieListStream(): Flow<PagingData<Movie>> {
+        return Pager(PagingConfig(20)) {
+            MoviePagingSource(service)
+        }.flow
     }
 }

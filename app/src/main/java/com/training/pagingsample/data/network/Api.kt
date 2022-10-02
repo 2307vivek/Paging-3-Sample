@@ -10,5 +10,5 @@ interface Api {
     @GET("3/discover/movie?sort_by=vote_count.desc")
     suspend fun getPopularMovies(
         @Query("page") page: Int
-    ) : Response<MovieListResponse>
+    ) : MovieListResponse
 }

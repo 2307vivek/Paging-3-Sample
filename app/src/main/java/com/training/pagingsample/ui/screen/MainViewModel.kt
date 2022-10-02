@@ -1,17 +1,17 @@
 package com.training.pagingsample.ui.screen
 
 import androidx.lifecycle.ViewModel
-import androidx.paging.*
+import androidx.paging.PagingData
+import androidx.paging.insertSeparators
+import androidx.paging.map
 import com.training.pagingsample.data.model.Movie
 import com.training.pagingsample.data.repository.Repository
-import com.training.pagingsample.data.repository.paged.MoviePagingSource
-
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class MainViewModel(private val repository: Repository) : ViewModel() {
+class MainViewModel(repository: Repository) : ViewModel() {
 
-    val movies: Flow<PagingData<MovieModel>> = getMovieListStream()
+    val movies: Flow<PagingData<MovieModel>> = repository.getMovieListStream()
         .map { pagingData -> pagingData.map { MovieModel.MovieItem(it) } }
         .map {
             it.insertSeparators<MovieModel.MovieItem, MovieModel> { before, after ->
@@ -38,13 +38,6 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
                 }
             }
         }
-
-
-    private fun getMovieListStream(): Flow<PagingData<Movie>> {
-        return Pager(PagingConfig(20)) {
-            MoviePagingSource(repository)
-        }.flow
-    }
 }
 
 sealed class MovieModel {
