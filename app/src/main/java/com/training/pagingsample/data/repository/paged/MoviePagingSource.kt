@@ -1,6 +1,7 @@
 package com.training.pagingsample.data.repository.paged
 
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.training.pagingsample.data.model.Movie
 import com.training.pagingsample.data.repository.Repository
 
@@ -23,5 +24,9 @@ class MoviePagingSource(
         }catch (e: Exception){
             LoadResult.Error(e)
         }
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, Movie>): Int {
+        return 1
     }
 }

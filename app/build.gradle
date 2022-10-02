@@ -7,12 +7,12 @@ def credentialProperty = new Properties()
 credentialProperty.load(new FileInputStream(credentials))
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.training.pagingsample"
-       minSdk 21
-        targetSdk 32
+        minSdk 21
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -71,7 +71,7 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3'
 
     //Paging
-    implementation "androidx.paging:paging-runtime:3.2.0-alpha02"
+    implementation "androidx.paging:paging-runtime:3.1.1"
 
     //koin
     implementation "org.koin:koin-core:2.1.5"
